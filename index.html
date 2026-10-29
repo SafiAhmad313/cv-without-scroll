@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="description" content="Safi Ahmad - 5th Semester BSCS Student & Web Development Intern Interactive Single-Page CV (Zero Scroll Dashboard).">
   <meta name="theme-color" content="#0b0f19">
   <title>Safi Ahmad &mdash; Interactive CV Dashboard</title>
@@ -26,14 +26,45 @@
        ========================================================================= -->
   <header class="app-header">
     
-    <!-- Brand Logo -->
-    <a href="#" class="brand-link" id="brand-home-link" title="Safi Ahmad">
-      <span class="brand-mono">[SA]</span>
-      <span class="brand-name">Safi Ahmad</span>
-    </a>
+    <!-- Top row for brand & actions (wraps cleanly on mobile) -->
+    <div class="header-top-row">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-link" id="brand-home-link" title="Safi Ahmad">
+        <span class="brand-mono">[SA]</span>
+        <span class="brand-name">Safi Ahmad</span>
+      </a>
 
-    <!-- Segmented Tab Switcher (Zero-Scroll Navigation) -->
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <div class="header-status-badge">
+          <span class="status-beacon-dot"></span>
+          <span class="status-text-full">Available for Roles</span>
+          <span class="status-text-short">Available</span>
+        </div>
+
+        <button class="btn btn-ghost" id="header-btn-resume" title="Download or Print CV">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span class="resume-text-full">Get Resume</span>
+          <span class="resume-text-short">CV</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Segmented Tab Switcher (Zero-Scroll Navigation Across All Devices) -->
     <nav class="nav-tab-container" role="tablist" aria-label="Portfolio Sections">
+      <button class="tab-btn mobile-only-tab" data-tab="profile" role="tab" aria-selected="false" aria-controls="pane-profile" id="tab-profile">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span class="tab-label-full">Profile</span>
+        <span class="tab-label-short">Bio</span>
+      </button>
+
       <button class="tab-btn active" data-tab="overview" role="tab" aria-selected="true" aria-controls="pane-overview" id="tab-overview">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="3" width="7" height="7"></rect>
@@ -41,7 +72,8 @@
           <rect x="14" y="14" width="7" height="7"></rect>
           <rect x="3" y="14" width="7" height="7"></rect>
         </svg>
-        <span>Overview</span>
+        <span class="tab-label-full">Overview</span>
+        <span class="tab-label-short">About</span>
       </button>
 
       <button class="tab-btn" data-tab="experience" role="tab" aria-selected="false" aria-controls="pane-experience" id="tab-experience">
@@ -49,7 +81,8 @@
           <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
           <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
         </svg>
-        <span>Experience</span>
+        <span class="tab-label-full">Experience</span>
+        <span class="tab-label-short">Exp</span>
       </button>
 
       <button class="tab-btn" data-tab="skills" role="tab" aria-selected="false" aria-controls="pane-skills" id="tab-skills">
@@ -57,7 +90,8 @@
           <polyline points="16 18 22 12 16 6"></polyline>
           <polyline points="8 6 2 12 8 18"></polyline>
         </svg>
-        <span>Skills</span>
+        <span class="tab-label-full">Skills</span>
+        <span class="tab-label-short">Skills</span>
       </button>
 
       <button class="tab-btn" data-tab="contact" role="tab" aria-selected="false" aria-controls="pane-contact" id="tab-contact">
@@ -65,51 +99,37 @@
           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
           <polyline points="22,6 12,13 2,6"></polyline>
         </svg>
-        <span>Contact</span>
+        <span class="tab-label-full">Contact</span>
+        <span class="tab-label-short">Contact</span>
       </button>
     </nav>
-
-    <!-- Header Actions -->
-    <div style="display: flex; align-items: center; gap: 0.75rem;">
-      <div class="header-status-badge">
-        <span class="status-beacon-dot"></span>
-        <span>Available for Roles</span>
-      </div>
-
-      <button class="btn btn-ghost" id="header-btn-resume" style="padding: 0.35rem 0.85rem; font-size: 0.7rem;">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
-        </svg>
-        Get Resume
-      </button>
-    </div>
 
   </header>
 
   <!-- =========================================================================
-       MAIN DASHBOARD STAGE (100% VIEWPORT NO-SCROLL)
+       MAIN DASHBOARD STAGE (100% VIEWPORT NO-SCROLL ACROSS ALL SCREENS)
        ========================================================================= -->
   <main class="dashboard-stage">
 
-    <!-- LEFT FIXED COLUMN: DEVELOPER IDENTITY HERO CARD -->
-    <aside class="glass-panel profile-sidebar">
+    <!-- DEVELOPER IDENTITY HERO CARD (Fixed Left Sidebar on Desktop / Full Tab Pane on Mobile) -->
+    <aside class="glass-panel profile-sidebar tab-pane" id="pane-profile" role="tabpanel" aria-labelledby="tab-profile">
       
       <div class="profile-card-top">
         
-        <!-- Portrait Photo Frame -->
-        <div class="profile-photo-wrapper">
-          <img src="profile.jpg" alt="Safi Ahmad" class="profile-photo" loading="eager">
-        </div>
+        <div class="profile-identity-group">
+          <!-- Portrait Photo Frame -->
+          <div class="profile-photo-wrapper">
+            <img src="profile.jpg" alt="Safi Ahmad" class="profile-photo" loading="eager">
+          </div>
 
-        <div>
-          <h1 class="profile-name">
-            Safi <span class="text-gradient-cyan">Ahmad</span>
-          </h1>
-          <p class="profile-role">
-            BSCS 5th Semester Student &amp; Web Development Intern
-          </p>
+          <div class="profile-identity-meta">
+            <h1 class="profile-name">
+              Safi <span class="text-gradient-cyan">Ahmad</span>
+            </h1>
+            <p class="profile-role">
+              BSCS 5th Semester Student &amp; Web Development Intern
+            </p>
+          </div>
         </div>
 
         <!-- Telemetry Data Rows -->
@@ -228,20 +248,20 @@
           <!-- Bento Stats Row -->
           <div class="bento-stats-row">
             <div class="bento-mini-stat">
-              <span class="bento-tag cyan">Degree Progression</span>
-              <span class="bento-val">5th Semester</span>
+              <span class="bento-tag cyan">Progression</span>
+              <span class="bento-val">5th Sem</span>
               <span class="bento-sub">BS Computer Science</span>
             </div>
 
             <div class="bento-mini-stat">
-              <span class="bento-tag blue">Industry Experience</span>
+              <span class="bento-tag blue">Industry</span>
               <span class="bento-val" style="font-size: 1.15rem;">Coding Pixel</span>
-              <span class="bento-sub">Web Development Intern</span>
+              <span class="bento-sub">Web Dev Intern</span>
             </div>
 
             <div class="bento-mini-stat">
-              <span class="bento-tag purple">Language Fluency</span>
-              <span class="bento-val">5+ Languages</span>
+              <span class="bento-tag purple">Fluency</span>
+              <span class="bento-val">5+ Langs</span>
               <span class="bento-sub">C++, Java, Python, SQL, JS</span>
             </div>
           </div>
@@ -348,10 +368,17 @@
           <span class="stage-badge">Core Capabilities</span>
         </div>
 
+        <!-- Mobile sub-category switcher for zero-scroll on compact screens -->
+        <div class="skills-mobile-switcher" role="tablist" aria-label="Skills Category">
+          <button class="skill-switch-btn active" data-skill-tab="lang">Languages</button>
+          <button class="skill-switch-btn" data-skill-tab="web">Web Tech</button>
+          <button class="skill-switch-btn" data-skill-tab="tools">Tools &amp; DSA</button>
+        </div>
+
         <div class="skills-tab-grid">
           
           <!-- Card 1: Programming Languages -->
-          <div class="skill-col-card">
+          <div class="skill-col-card active-mobile-skill" data-skill-panel="lang">
             <div>
               <div class="skill-col-header">
                 <h3 class="skill-col-title">Programming Languages</h3>
@@ -422,7 +449,7 @@
           </div>
 
           <!-- Card 2: Web Technologies -->
-          <div class="skill-col-card">
+          <div class="skill-col-card" data-skill-panel="web">
             <div>
               <div class="skill-col-header">
                 <h3 class="skill-col-title">Web Technologies</h3>
@@ -465,7 +492,7 @@
           </div>
 
           <!-- Card 3: Tools & Fundamentals -->
-          <div class="skill-col-card">
+          <div class="skill-col-card" data-skill-panel="tools">
             <div>
               <div class="skill-col-header">
                 <h3 class="skill-col-title">Tools &amp; Fundamentals</h3>
@@ -515,7 +542,7 @@
 
       <!-- =====================================================================
            TAB 4: CONTACT
-           ===================================================================== -->
+           ==================================================================== -->
       <div class="tab-pane" id="pane-contact" role="tabpanel" aria-labelledby="tab-contact">
         
         <div class="stage-header">
@@ -523,10 +550,16 @@
           <span class="stage-badge">Communication</span>
         </div>
 
+        <!-- Mobile sub-category switcher for zero-scroll on compact screens -->
+        <div class="contact-mobile-switcher" role="tablist" aria-label="Contact Section">
+          <button class="contact-switch-btn active" data-contact-tab="form">Send Message</button>
+          <button class="contact-switch-btn" data-contact-tab="info">Direct Info</button>
+        </div>
+
         <div class="contact-tab-layout">
           
           <!-- Left Column: Direct Beacons -->
-          <div class="contact-left-card">
+          <div class="contact-left-card" data-contact-panel="info">
             <div>
               <h3 class="contact-heading">Initiate Collaboration</h3>
               <p class="contact-sub">
@@ -568,7 +601,7 @@
           </div>
 
           <!-- Right Column: Interactive Quick Form -->
-          <div class="contact-right-card">
+          <div class="contact-right-card active-mobile-contact" data-contact-panel="form">
             <div>
               <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary);">Send a Message</h3>
               <p style="font-size: 0.74rem; color: var(--text-muted);">Inquire about projects, roles, or engineering discussions</p>
@@ -620,7 +653,7 @@
   </main>
 
   <!-- =========================================================================
-       STICKY BOTTOM APPLICATION STATUS BAR
+       STICKY BOTTOM APPLICATION STATUS BAR (Desktop Telemetry)
        ========================================================================= -->
   <footer class="app-statusbar">
     <div class="statusbar-left">
@@ -632,7 +665,7 @@
     </div>
 
     <div class="statusbar-right">
-      <span>Switch tabs with keyboard [1-4]</span>
+      <span>Switch tabs with keyboard [1-5]</span>
       <span>&bull;</span>
       <span>&copy; 2026 Safi Ahmad. All rights reserved.</span>
     </div>
